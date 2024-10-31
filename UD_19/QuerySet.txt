@@ -1,0 +1,32 @@
+from task1.models import Buyer
+
+from task1.models import Game
+
+
+Buyer.objects.create(name='Max99', balance=3000, age=25)
+
+Buyer.objects.create(name='Vladiator', balance=1200, age=17)
+
+Buyer.objects.create(name='Vetall', balance=8544.67, age=28)
+
+
+Game.objects.create(title='Cyberpunk2077', cost=31, size= 46.2, description='Game of year',age_limited=1)
+
+Game.objects.create(title='Mario', cost=5, size= 0.5, description='Game of year', age_limited=0)
+
+Game.objects.create(title='Hitman', cost=12, size= 36.6, description='Who kills Mark', age_limited=1)
+
+
+first_buyer= Buyer.objects.get(id=1)
+
+second_buyer = Buyer.objects.get(id=2)
+
+third_buyer = Buyer.objects.get(id=3)
+
+
+Game.objects.get(id=1).buyer.set(([third_buyer]))
+
+Game.objects.get(id=2).buyer.set((first_buyer, second_buyer, third_buyer))
+
+Game.objects.get(id=3).buyer.set((first_buyer, third_buyer))
+
