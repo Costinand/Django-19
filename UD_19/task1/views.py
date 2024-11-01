@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import HttpResponse
 from .forms import UserRegister
-from task1.models import Buyer
+from task1.models import Buyer, Game
 
 
 # Create your views here.
@@ -9,8 +9,9 @@ def platform(request):
     return render(request, 'platform.html')
 
 def games(request):
-    scroll = {'games': ['Atomic Heart ', 'Cyberpunk 2077 ', 'PayDay 2 ']}
-    context = {'scroll': scroll,}
+    # scroll = {'games': ['Atomic Heart ', 'Cyberpunk 2077 ', 'PayDay 2 ']}
+    games = Game.objects.all()
+    context = {'games': games}
     return render(request, 'games.html', context)
 def cart(request):
     return render(request, 'cart.html')
@@ -20,7 +21,7 @@ def sign_up(request):
     users = Buyer.objects.all() # список объектов из таблицы покупателей
     for user in users: # перебор объектов
         name_users.append(user.name) # в список покупателей достаются только имена объектов
-    print(name_users) # для наглядности вывод на терминале
+    # print(name_users) # для наглядности вывод на терминале
     info = {}
     if request.method == 'POST':
         user_exist = False # по умолчанию новый пользователь не присутствует
