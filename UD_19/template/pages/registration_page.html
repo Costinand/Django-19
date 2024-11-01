@@ -1,9 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+{% extends "menu.html" %}
+
+{% block pagename %}
+    <h1>Регистрация</h1>
+{% endblock %}
+
+{% block menu %}
+    {{block.super}}
+{% endblock %}
+
+{% block content %}
+    {{block.super}}
+
 <body>
     <form method="post">
         {% csrf_token %}
@@ -20,9 +27,7 @@
         <input type="number" id="age" name="age" maxlength="3" required>
 
         <button type="submit">Зарегестрироваться</button>
-
     </form>
-
 </body>
-</html>
 
+{% endblock %}
